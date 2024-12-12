@@ -1,0 +1,26 @@
+<div class="navbar">
+    <a class="navbar-item" href="/app/user-info">User Info</a>
+
+    <% if (user.type === 'user') { %>
+
+        <a class="navbar-item" href="/app/all-books">View All Books</a>
+        <a class="navbar-item" href="/app/my-rentals">My Rentals</a>
+
+    <% } else if (user.type === 'admin') { %>
+
+        <a class="navbar-item" href="/app/all-users">View All Users</a>
+        <a class="navbar-item" href="/app/add-user">Add/Edit User</a>
+        <a class="navbar-item" href="/app/delete-user">Delete User</a>
+        <a class="navbar-item" href="/app/all-books">View All Books</a>
+        <a class="navbar-item" href="/app/add-book">Add/Edit Book</a>
+        <a class="navbar-item" href="/app/delete-book">Delete Book</a>
+        <a class="navbar-item" href="/app/all-authors">View All Authors</a>
+        <a class="navbar-item" href="/app/add-author">Add/Edit Author</a>
+        <a class="navbar-item" href="/app/delete-author">Delete Author</a>
+        <a class="navbar-item" href="/app/all-rentals">View All Rentals</a>
+        <a class="navbar-item" href="/app/add-rental">Add/Edit Rentals</a>
+        <a class="navbar-item" href="/app/delete-rental">Delete Rental</a>
+
+    <% } %>
+    <a class="navbar-item" href="/api/logout">Log Out</a>
+</div>

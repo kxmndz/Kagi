@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Kagi - Not Authenticated</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+
+        <div class="main">
+            <%- include("../partials/header.ejs") %>
+
+            <div class="app">
+                <h1>
+                    Not Authenticated
+                </h1>
+                <p>Access Denied. <a href="/api/logout">Click here to log in as a different user</a>.</p>
+            </div>
+        </div>
+    </body>
+</html>

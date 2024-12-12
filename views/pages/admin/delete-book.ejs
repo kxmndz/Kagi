@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Kagi - Library (Admin View)</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class='main'>
+            <%- include("../../partials/header.ejs") %>
+            <%- include("../../partials/navbar.ejs") %>
+
+            <div class='app'>
+                   <h2>Current Books:</h2>
+                <table>
+                    <tr><th>Book ID</th><th>Original Title</th><th>Localized Title</th><th>Author</th><th>Publish Date</th><th>Status</th><th>Age Range</th></tr>
+                    <%- Array.from(books.values()).map(book => book.asHtmlRow()).join('') %>
+                </table>
+                   
+                   <h2>Delete Book</h2>
+                   <form method="post" action="/api/delete-book">
+                    <div class="delete-book-form">
+                        <div ><label>Book ID: <input type="text" name="target"></label></div>
+                        <button type="submit" class="login-button">Delete Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

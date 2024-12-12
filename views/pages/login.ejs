@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Kagi - Log In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="main">
+        <%- include("../partials/header.ejs") %>
+            <div class="app">
+                <h2>Log In</h2>
+                <form method="post" action="/api/login">
+                    <div class="login-form">
+                        <div class="username-container"><label>Username: <input type="text" name="username"></label></div>
+                        <div class="password-container"><label>Password: <input type="password" name="password"></label></div>
+                        <button type="submit" class="login-button">Login</button>
+                        <a href="/auth/signup">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

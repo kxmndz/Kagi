@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi - User Info</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class='main'>
+    <%- include("../partials/header.ejs") %>
+    <%- include("../partials/navbar.ejs", user) %>
+
+    <div class='app'>
+        <h2>User Type: <%= target.type %></h2>
+        <% if (target.type === 'user') { %>
+            <h2>ID: <%= target.id %></h2>
+            <h2>Name: <%= target.name %></h2>
+            <h2>Email: <%= target.email %></h2>
+            <% if (target.phone) { %><h2>Phone: <%= target.phone %></h2> <% } %>
+            <h2>Birthdate: <%= target.birthdate %></h2>
+        <% } %>
+
+        <% if (user?.type === 'admin') { %>
+            <h2>Username: <%= target.username %></h2>
+            <h2>Password: <%= target.password %></h2>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

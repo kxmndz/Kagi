@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi - User Info</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class='main'>
+    <%- include("../partials/header.ejs") %>
+    <%- include("../partials/navbar.ejs", user) %>
+
+    <div class='app'>
+        <%- book.asInfoPage() %>
+    </div>
+</div>
+</body>
+</html>

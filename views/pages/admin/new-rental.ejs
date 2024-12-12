@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi (admin) - New Rental</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class='main'>
+    <%- include("../../partials/header.ejs") %>
+    <%- include("../../partials/navbar.ejs") %>
+
+    <div class='app'>
+        <h2>Current Rentals</h2>
+        <table>
+            <tr><th>User ID</th><th>Book ID</th><th>Due Date</th></tr>
+            <%- Array.from(rentals.entries()).map(([uId, rents]) => {
+
+                return rents.map(({bookId, dueDate}) => `<tr>
+                    <td>
+                        <a href="/app/user/${uId}">${uId}</a>
+                    </td>
+                    <td>
+                        <a href="/app/book/${bookId}">${bookId}</a>
+                    </td>
+                    <td>${dueDate}</td>
+                </tr>`);
+            }).join(''); %>
+        </table>
+
+        <h2>Add Rental</h2>
+        <form method="post" action="/api/new-rental">
+            <div class="add-book-form">
+                <div><label>Book ID: <input type="text" name="bookId"></label></div>
+                <div><label>User ID: <input type="text" name="userId"></label></div>
+                <div><label>Due Date: <input type="text" name="dueDate"></label></div>
+
+                <button type="submit" class="login-button">New Rental</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

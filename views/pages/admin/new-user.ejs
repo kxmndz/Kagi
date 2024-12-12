@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi (admin) - Add/Edit User</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="main">
+    <%- include("../../partials/header.ejs") %>
+    <%- include("../../partials/navbar.ejs") %>
+
+    <div class="app">
+        <h2>Current Users</h2>
+        <table>
+            <tr><th>User ID</th><th>Username</th> <th>Password</th> <th>Rentals</th></tr>
+            <%- (function (){
+                if (users.length === 0) return 'No users in db';
+                else return Array.from(users.values()).map(user => {
+                    return `<tr><td><a href="/app/user/${user.id}">${user.id}</a></td><td>${user.username}</td><td>${user.password}</td><td>`
+                            + (user.rentals?.map(rental => `<a href="/app/book/${rental.bookId}">${rental.bookId}</a> - Due ${rental.dueDate}`).join('\n') ?? 'No active rentals')
+                            + '</td></tr>';
+                }).join('');
+            })() %>
+        </table>
+
+        <h2>Add/Edit User</h2>
+        <form method="post" action="/api/new-user">
+            <div class="login-form">
+                <div class="username-container"><label>Username: <input type="text"     name="username"></label></div>
+                <div class="password-container"><label>Password: <input type="password" name="password"></label></div>
+                <div></div>
+                <div class="name-container"><label>Name: <input type="text"             name="name"></label></div>
+                <div class="birthdate-container"><label>Birthdate: <input type="text"   name="birthdate"></label></div>
+                <div class="email-container"><label>Email: <input type="text"           name="email"></label></div>
+                <div class="phone-container"><label>Phone Num: <input type="text"       name="phone"></label></div>
+                <button type="submit" class="login-button">Sign Up</button>
+                <a href="/auth/login">Log In</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

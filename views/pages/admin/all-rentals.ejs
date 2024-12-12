@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi (admin) - Users</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class='main'>
+    <%- include("../../partials/header.ejs") %>
+    <%- include("../../partials/navbar.ejs") %>
+
+    <div class='app'>
+        <h2>All Rentals</h2>
+        <table>
+            <tr><th>User ID</th><th>Book ID</th><th>Due Date</th></tr>
+            <%- Array.from(rentals.entries()).map(([uId, rents]) => {
+
+                return rents.map(({bookId, dueDate}) => `<tr>
+                    <td>
+                        <a href="/app/user/${uId}">${uId}</a>
+                    </td>
+                    <td>
+                        <a href="/app/book/${bookId}">${bookId}</a>
+                    </td>
+                    <td>${dueDate}</td>
+                </tr>`);
+            }).join(''); %>
+        </table>
+    </div>
+</div>
+</body>
+</html>

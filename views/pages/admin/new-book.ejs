@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi (admin) - New Book</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class='main'>
+    <%- include("../../partials/header.ejs") %>
+    <%- include("../../partials/navbar.ejs") %>
+
+    <div class='app'>
+        <h2>Current Books:</h2>
+        <table>
+            <tr><th>Book ID</th><th>Original Title</th><th>Localized Title</th><th>Author</th><th>Publish Date</th><th>Status</th><th>Age Range</th></tr>
+            <%- Array.from(books.values()).map(book => book.asHtmlRow()).join('') %>
+        </table>
+
+        <h2>Add Book</h2>
+        <form method="post" action="/api/new-book">
+            <div class="add-book-form">
+                <div><label>Book ID: <input type="text" name="id"></label></div>
+                <div><label>Original Title: <input type="text" name="origTitle"></label></div>
+                <div><label>Localized Title: <input type="text" name="localTitle"></label></div>
+                <div><label>Author ID: <input type="number" name="author"></label></div>
+                <div><label>Publish Year: <input type="number" name="year"></label></div>
+                <div><label>Publish Month: <input type="number" name="month"></label></div>
+                <div><label>Publish Day: <input type="number" name="day"></label></div>
+                <div><label>Publish Status: <input type="text" name="status"></label></div>
+                <div><label>Age Range: <input type="text" name="ageRange"></label></div>
+                <div><label>Synopsis: <input type="text" name="synopsis"></label></div>
+                <button type="submit" class="login-button">Add Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

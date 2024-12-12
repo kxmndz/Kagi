@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kagi (admin) - Delete Author</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class='main'>
+    <%- include("../../partials/header.ejs") %>
+    <%- include("../../partials/navbar.ejs") %>
+
+    <div class='app'>
+        <h2>Current Authors</h2>
+        <table>
+            <tr>
+                <th>Author ID</th>
+                <td>Author Name</td>
+                <td>Author's Books</td>
+            </tr>
+            <%- Array.from(authors.values()).map(author => {
+                return `<tr> <td>${author.asLink()}</td>    <td>${author._name}</td>    <td>`
+                        + Array.from(books.values())
+                                .filter(book => (book._author.toString() === author._id))
+                                .map(book => book.asLink()).join('<br />')
+                        + '</td></tr>';
+            }).join('') %>
+        </table>
+
+        <h2>Delete Book</h2>
+        <form method="post" action="/api/delete-author">
+            <div class="delete-book-form">
+                <div><label>Author ID: <input type="text" name="target"></label></div>
+                <button type="submit" class="login-button">Delete Author</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
